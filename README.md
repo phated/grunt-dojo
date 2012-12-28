@@ -14,8 +14,18 @@ grunt.loadNpmTasks('grunt-dojo');
 [grunt]: http://gruntjs.com/
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
-## Documentation
-_(Coming soon)_
+## Usage
+
+```javascript
+dojo: {
+  frozen: {
+    dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
+    load: 'build', // Optional: Utility to bootstrap (Default: 'build')
+    profile: 'app.profile.js', // Profile for build
+    cwd: './' // Directory to execute build within
+  }
+}
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
@@ -24,5 +34,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2012 Blaine Bublitz  
+Copyright (c) 2012 Blaine Bublitz
 Licensed under the MIT license.
