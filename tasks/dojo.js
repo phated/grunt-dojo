@@ -27,7 +27,7 @@ module.exports = function(grunt) {
     var args = [];
     if(this.data.dojo){
       args.push(this.data.dojo);
-      args.push('load=build');
+      args.push('load=' + (this.data.load ? this.data.load : 'build'));
 
       if(this.data.profile){
         args.push('--profile', this.data.profile);
