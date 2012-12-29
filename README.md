@@ -22,6 +22,7 @@ dojo: {
     dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
     load: 'build', // Optional: Utility to bootstrap (Default: 'build')
     profile: 'app.profile.js', // Profile for build
+    package: '', // Optional: Location to search package.json (Default: nothing)
     cwd: './' // Directory to execute build within
   }
 }

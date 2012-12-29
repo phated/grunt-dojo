@@ -32,6 +32,10 @@ module.exports = function(grunt) {
       if(this.data.profile){
         args.push('--profile', this.data.profile);
       }
+
+      if(this.data.package){
+        args.push('--package', this.data.package);
+      }
     }
 
     var opts = {};
