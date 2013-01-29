@@ -23,7 +23,8 @@ dojo: {
     load: 'build', // Optional: Utility to bootstrap (Default: 'build')
     profile: 'app.profile.js', // Profile for build
     package: '', // Optional: Location to search package.json (Default: nothing)
-    cwd: './' // Directory to execute build within
+    cwd: './', // Directory to execute build within
+    dojoConfig: '' // Optional: Location of dojoConfig (Default: null)
   }
 }
 ```

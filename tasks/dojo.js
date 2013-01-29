@@ -36,6 +36,10 @@ module.exports = function(grunt) {
       if(this.data.package){
         args.push('--package', this.data.package);
       }
+
+      if(this.data.dojoConfig){
+        args.push('--dojoConfig', this.data.dojoConfig);
+      }
     }
 
     var opts = {};
