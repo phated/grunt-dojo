@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   // TASKS
   // ==========================================================================
 
-    grunt.registerMultiTask('dojo', 'build dojo by spawning a child process', function(){
+  grunt.registerMultiTask('dojo', 'build dojo by spawning a child process', function(){
 
     var utils = grunt.utils;
     var done = this.async();
@@ -31,6 +31,12 @@ module.exports = function(grunt) {
 
       if(this.data.profile){
         args.push('--profile', this.data.profile);
+      }
+
+      if(this.data.packages && Array.isArray(this.data.packages)){
+        this.data.packages.forEach(function(packagePath){
+          args.push('--package', packagePath);
+        });
       }
 
       if(this.data.package){
