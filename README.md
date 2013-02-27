@@ -2,6 +2,12 @@
 
 Build Dojo inside a Grunt task
 
+## Compatibility
+
+grunt-dojo `~0.2.0` works with Grunt `~0.4.0`
+
+For Grunt `~0.3.0`: use `grunt-dojo@0.1.2`
+
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-dojo`
 
@@ -19,6 +25,18 @@ grunt.loadNpmTasks('grunt-dojo');
 ```javascript
 dojo: {
   dist: {
+    options: {
+      dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
+      load: 'build', // Optional: Utility to bootstrap (Default: 'build')
+      profile: 'app.profile.js', // Profile for build
+      package: '', // Optional: Location to search package.json (Default: nothing)
+      packages [], // Optional: Array of locations of package.json (Default: nothing)
+      cwd: './', // Directory to execute build within
+      dojoConfig: '' // Optional: Location of dojoConfig (Default: null)
+    }
+  },
+  options: {
+    // You can also specify options to be used in all your tasks
     dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
     load: 'build', // Optional: Utility to bootstrap (Default: 'build')
     profile: 'app.profile.js', // Profile for build
@@ -37,5 +55,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2012 Blaine Bublitz
+Copyright (c) 2013 Blaine Bublitz
 Licensed under the MIT license.
