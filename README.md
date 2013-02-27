@@ -6,7 +6,7 @@ Build Dojo inside a Grunt task
 
 grunt-dojo `~0.2.0` works with Grunt `~0.4.0`
 
-For Grunt `~0.3.0`: use `grunt-dojo@0.1.2`
+For Grunt `~0.3.0`: use `grunt-dojo@0.1.3`
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-dojo`
