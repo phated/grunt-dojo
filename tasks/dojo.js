@@ -20,6 +20,9 @@ module.exports = function(grunt) {
       profile: null,
       package: null,
       packages: null,
+      require: null,
+      requires: null,
+      releaseDir: null,
       cwd: null,
       dojoConfig: null
     });
@@ -45,9 +48,23 @@ module.exports = function(grunt) {
         args.push('--package', options.package);
       }
 
-      if(options.dojoConfig){
-        args.push('--dojoConfig', options.dojoConfig);
-      }
+       if(options.requires && Array.isArray(options.requires)){
+        options.requires.forEach(function(requirePath){
+         args.push('--require', requirePath);
+        });
+       }
+
+       if(options.require){
+        args.push('--require', options.require);
+       }
+
+        if(options.dojoConfig){
+            args.push('--dojoConfig', options.dojoConfig);
+        }
+
+        if(options.releaseDir){
+            args.push('--releaseDir', options.releaseDir);
+        }
     } else {
       grunt.log.error('No dojo specified');
       done(false);
@@ -58,6 +75,7 @@ module.exports = function(grunt) {
       opts.cwd = options.cwd;
     }
 
+      grunt.log.writeln(args);
     grunt.util.spawn({
       cmd: 'node',
       args: args,
@@ -65,6 +83,7 @@ module.exports = function(grunt) {
     }, function(err, result){
       if(err){
         grunt.log.error(err);
+        grunt.log.error(err.stack);
         return done(false);
       }
 
