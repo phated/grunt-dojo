@@ -38,33 +38,29 @@ module.exports = function(grunt) {
         args.push('--profile', options.profile);
       }
 
-      if(options.packages && Array.isArray(options.packages)){
-        options.packages.forEach(function(packagePath){
-          args.push('--package', packagePath);
-        });
+      /*
+       * Support both the singular and plural form of the 'package' and 'require' parameters
+       */
+      ['package', 'require'].forEach(function(dojoParam){
+          if(!Array.isArray(options[dojoParam+'s'])) {
+              options[dojoParam+'s'] = [];
+          }
+          if(options[dojoParam]){
+              options[dojoParam+'s'].push(options[dojoParam]);
+          }
+          options[dojoParam+'s'].forEach(function(packagePath){
+              args.push('--'+dojoParam, packagePath);
+          });
+      });
+
+
+      if(options.dojoConfig){
+       args.push('--dojoConfig', options.dojoConfig);
       }
 
-      if(options.package){
-        args.push('--package', options.package);
+      if(options.releaseDir){
+       args.push('--releaseDir', options.releaseDir);
       }
-
-       if(options.requires && Array.isArray(options.requires)){
-        options.requires.forEach(function(requirePath){
-         args.push('--require', requirePath);
-        });
-       }
-
-       if(options.require){
-        args.push('--require', options.require);
-       }
-
-        if(options.dojoConfig){
-            args.push('--dojoConfig', options.dojoConfig);
-        }
-
-        if(options.releaseDir){
-            args.push('--releaseDir', options.releaseDir);
-        }
     } else {
       grunt.log.error('No dojo specified');
       done(false);
@@ -75,7 +71,6 @@ module.exports = function(grunt) {
       opts.cwd = options.cwd;
     }
 
-      grunt.log.writeln(args);
     grunt.util.spawn({
       cmd: 'node',
       args: args,
@@ -83,7 +78,6 @@ module.exports = function(grunt) {
     }, function(err, result){
       if(err){
         grunt.log.error(err);
-        grunt.log.error(err.stack);
         return done(false);
       }
 
