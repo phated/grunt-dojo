@@ -30,12 +30,25 @@ module.exports = function(grunt) {
     grunt.log.subhead('Building Dojo...');
 
     var args = [];
+    /*
+     * Add parameter(s) to the argument list and log them, if in verbose mode.
+     */
+    var addParam = function() {
+        grunt.verbose.write("\t");
+        grunt.util._.forEach(arguments, function(param) {
+            args.push(param);
+            grunt.verbose.write(param +" ");
+        });
+        grunt.verbose.write("\n");
+    };
+
     if(options.dojo){
-      args.push(options.dojo);
-      args.push('load=' + options.load);
+      grunt.verbose.writeln("Dojo build parameters:");
+      addParam(options.dojo);
+      addParam('load=' + options.load);
 
       if(options.profile){
-        args.push('--profile', options.profile);
+        addParam('--profile', options.profile);
       }
 
       /*
@@ -43,23 +56,23 @@ module.exports = function(grunt) {
        */
       ['package', 'require'].forEach(function(dojoParam){
           if(!Array.isArray(options[dojoParam+'s'])) {
-              options[dojoParam+'s'] = [];
+            options[dojoParam+'s'] = [];
           }
           if(options[dojoParam]){
-              options[dojoParam+'s'].push(options[dojoParam]);
+            options[dojoParam+'s'].push(options[dojoParam]);
           }
-          options[dojoParam+'s'].forEach(function(packagePath){
-              args.push('--'+dojoParam, packagePath);
+          options[dojoParam+'s'].forEach(function(paramValue){
+           addParam('--'+dojoParam, paramValue);
           });
       });
 
 
       if(options.dojoConfig){
-       args.push('--dojoConfig', options.dojoConfig);
+       addParam('--dojoConfig', options.dojoConfig);
       }
 
       if(options.releaseDir){
-       args.push('--releaseDir', options.releaseDir);
+       addParam('--releaseDir', options.releaseDir);
       }
     } else {
       grunt.log.error('No dojo specified');
@@ -71,7 +84,10 @@ module.exports = function(grunt) {
       opts.cwd = options.cwd;
     }
 
-    grunt.util.spawn({
+
+
+
+    var child = grunt.util.spawn({
       cmd: 'node',
       args: args,
       opts: opts
@@ -86,6 +102,14 @@ module.exports = function(grunt) {
       done();
     });
 
+      if(!!grunt.option('verbose')) {
+          child.stdout.on('data', function (data) {
+              grunt.log.write(data);
+          });
+          child.stderr.on('data', function (data) {
+              grunt.log.error(data);
+          });
+      }
   });
 
 };
