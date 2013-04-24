@@ -44,6 +44,8 @@ dojo: {
     profile: 'app.profile.js', // Profile for build
     package: '', // Optional: Location to search package.json (Default: nothing)
     packages [], // Optional: Array of locations of package.json (Default: nothing)
+    require: '', // Optional: Module to require for the build (Default: nothing)
+    requires [], // Optional: Array of modules to require for the build (Default: nothing)
     cwd: './', // Directory to execute build within
     dojoConfig: '' // Optional: Location of dojoConfig (Default: null)
   }
