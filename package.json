@@ -1,7 +1,7 @@
 {
   "name": "grunt-dojo",
   "description": "Build Dojo inside a Grunt task",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/phated/grunt-dojo",
   "author": {
     "name": "Blaine Bublitz",
@@ -23,7 +23,7 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": "~0.8.x"
+    "node": ">=0.8.x"
   },
   "scripts": {
     "test": "grunt"
