@@ -47,6 +47,10 @@ module.exports = function(grunt) {
       addParam(options.dojo);
       addParam('load=' + options.load);
 
+      if(options.dojoConfig){
+       addParam('--dojoConfig', options.dojoConfig);
+      }
+
       if(options.profile){
         addParam('--profile', options.profile);
       }
@@ -66,10 +70,6 @@ module.exports = function(grunt) {
           });
       });
 
-
-      if(options.dojoConfig){
-       addParam('--dojoConfig', options.dojoConfig);
-      }
 
       if(options.releaseDir){
        addParam('--releaseDir', options.releaseDir);
