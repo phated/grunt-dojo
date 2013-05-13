@@ -14,31 +14,19 @@ module.exports = function(grunt) {
 
     var done = this.async();
 
-    var userOptions = this.options(),
-      options = {},
-      defaults = {
-        dojo: null,
-        load: 'build',
-        profile: null,
-        package: null,
-        packages: null,
-        require: null,
-        requires: null,
-        releaseDir: null,
-        cwd: null,
-        dojoConfig: null,
-        basePath: null
-      };
-
-    /* Copy properties from user configuration first and then
-     * copy the non-specified defaults over. This preserves
-     * the order in which the user defined the properties.
-     */
-    grunt.util._.forEach(userOptions, function(value, key){
-      options[key] = userOptions[key];
-      delete defaults[key];
+    var options = this.options({
+      dojo: null,
+      load: 'build',
+      profile: null,
+      package: null,
+      packages: null,
+      require: null,
+      requires: null,
+      releaseDir: null,
+      cwd: null,
+      dojoConfig: null,
+      basePath: null
     });
-    grunt.util._.extend(options, defaults);
 
     grunt.log.subhead('Building Dojo...');
 
@@ -60,28 +48,36 @@ module.exports = function(grunt) {
       addParam(options.dojo);
       addParam('load=' + options.load);
 
-      // Add command line parameters in the order in which they were defined
-      grunt.util._.forEach(options, function(value, key){
-        var match;
-        if(value == null){
-          return;
-        }
-        if(/^dojoConfig|profile|releaseDir|basePath$/.test(key)){
-          addParam('--' + key, value);
-        }
-        else if((match = key.match(/^(package|require)s?$/))){
-          /*
-           * Support both the singular and plural form of the 'package' and 'require' parameters
-           */
-          if(!Array.isArray(value)){
-            value = [value];
+      if(options.basePath){
+        addParam('--basePath', options.basePath);
+      }
+      if(options.profile){
+        addParam('--profile', options.profile);
+      }
+
+      /*
+       * Support both the singular and plural form of the 'package' and 'require' parameters
+       */
+      ['package', 'require'].forEach(function(dojoParam){
+          if(!Array.isArray(options[dojoParam+'s'])) {
+            options[dojoParam+'s'] = [];
           }
-          value.forEach(function(value){
-            addParam('--' + match[1], value);
+          if(options[dojoParam]){
+            options[dojoParam+'s'].push(options[dojoParam]);
+          }
+          options[dojoParam+'s'].forEach(function(paramValue){
+           addParam('--'+dojoParam, paramValue);
           });
-        }
       });
 
+
+      if(options.dojoConfig){
+       addParam('--dojoConfig', options.dojoConfig);
+      }
+
+      if(options.releaseDir){
+       addParam('--releaseDir', options.releaseDir);
+      }
     } else {
       grunt.log.error('No dojo specified');
       done(false);
@@ -91,6 +87,9 @@ module.exports = function(grunt) {
     if(options.cwd){
       opts.cwd = options.cwd;
     }
+
+
+
 
     var child = grunt.util.spawn({
       cmd: 'node',
