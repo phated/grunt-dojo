@@ -24,7 +24,8 @@ module.exports = function(grunt) {
       requires: null,
       releaseDir: null,
       cwd: null,
-      dojoConfig: null
+      dojoConfig: null,
+      basePath: null
     });
 
     grunt.log.subhead('Building Dojo...');
@@ -47,6 +48,9 @@ module.exports = function(grunt) {
       addParam(options.dojo);
       addParam('load=' + options.load);
 
+      if(options.basePath){
+        addParam('--basePath', options.basePath);
+      }
       if(options.profile){
         addParam('--profile', options.profile);
       }
