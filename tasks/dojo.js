@@ -88,9 +88,6 @@ module.exports = function(grunt) {
       opts.cwd = options.cwd;
     }
 
-
-
-
     var child = grunt.util.spawn({
       cmd: 'node',
       args: args,
@@ -106,14 +103,12 @@ module.exports = function(grunt) {
       done();
     });
 
-      if(!!grunt.option('verbose')) {
-          child.stdout.on('data', function (data) {
-              grunt.log.write(data);
-          });
-          child.stderr.on('data', function (data) {
-              grunt.log.error(data);
-          });
-      }
+    child.stdout.on('data', function (data) {
+      grunt.verbose.write(data);
+    });
+    child.stderr.on('data', function (data) {
+      grunt.verbose.error(data);
+    });
   });
 
 };
