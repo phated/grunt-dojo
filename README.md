@@ -34,7 +34,11 @@ dojo: {
       require: '', // Optional: Module to require for the build (Default: nothing)
       requires [], // Optional: Array of modules to require for the build (Default: nothing)
       cwd: './', // Directory to execute build within
-      dojoConfig: '' // Optional: Location of dojoConfig (Default: null)
+      dojoConfig: '' // Optional: Location of dojoConfig (Default: null),
+      // Optional: Base Path to pass at the command line
+      // Takes precedence over other basePaths
+      // Default: null
+      basePath: ''
     }
   },
   options: {
@@ -47,7 +51,11 @@ dojo: {
     require: '', // Optional: Module to require for the build (Default: nothing)
     requires [], // Optional: Array of modules to require for the build (Default: nothing)
     cwd: './', // Directory to execute build within
-    dojoConfig: '' // Optional: Location of dojoConfig (Default: null)
+    dojoConfig: '' // Optional: Location of dojoConfig (Default: null),
+    // Optional: Base Path to pass at the command line
+    // Takes precedence over other basePaths
+    // Default: null
+    basePath: ''
   }
 }
 ```
