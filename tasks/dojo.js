@@ -14,17 +14,88 @@ module.exports = function(grunt) {
 
     var done = this.async();
 
+    /**
+     * @namespace defaults
+     */
     var options = this.options({
+      /**
+       * Path to dojo.js file in Dojo source
+       * @type {String}
+       * @memberOf defaults
+       * @default
+       */
       dojo: null,
+      /**
+       * Utility to bootstrap
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       load: 'build',
+      /**
+       * Profile for the build
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       profile: null,
+      /**
+       * Location to search for package.json
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       package: null,
+      /**
+       * Array of locations to search for package.json files
+       * @type {Array=}
+       * @memberOf defaults
+       * @default
+       */
       packages: null,
+      /**
+       * Module to require for the build
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       require: null,
+      /**
+       * Array of modules to require for the build
+       * @type {Array=}
+       * @memberOf defaults
+       * @default
+       */
       requires: null,
+      /**
+       * Release directory for the build
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       releaseDir: null,
+      /**
+       * Directory to execute build within
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
       cwd: null,
-      dojoConfig: null
+      /**
+       * Location of dojoConfig to be used in build
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
+      dojoConfig: null,
+      /**
+       * Base Path to pass at the command line
+       * Takes precedence over all other basePaths
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
+      basePath: null
     });
 
     grunt.log.subhead('Building Dojo...');
@@ -47,6 +118,9 @@ module.exports = function(grunt) {
       addParam(options.dojo);
       addParam('load=' + options.load);
 
+      if(options.basePath){
+        addParam('--basePath', options.basePath);
+      }
       if(options.profile){
         addParam('--profile', options.profile);
       }
@@ -84,9 +158,6 @@ module.exports = function(grunt) {
       opts.cwd = options.cwd;
     }
 
-
-
-
     var child = grunt.util.spawn({
       cmd: 'node',
       args: args,
@@ -102,14 +173,12 @@ module.exports = function(grunt) {
       done();
     });
 
-      if(!!grunt.option('verbose')) {
-          child.stdout.on('data', function (data) {
-              grunt.log.write(data);
-          });
-          child.stderr.on('data', function (data) {
-              grunt.log.error(data);
-          });
-      }
+    child.stdout.on('data', function (data) {
+      grunt.verbose.write(data);
+    });
+    child.stderr.on('data', function (data) {
+      grunt.verbose.error(data);
+    });
   });
 
 };
