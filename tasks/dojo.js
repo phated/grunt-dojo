@@ -40,6 +40,13 @@ module.exports = function(grunt) {
        */
       profile: null,
       /**
+       * Config file for dojox/app
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
+      appConfigFile: null,
+      /**
        * Location to search for package.json
        * @type {String=}
        * @memberOf defaults
@@ -123,6 +130,9 @@ module.exports = function(grunt) {
       }
       if(options.profile){
         addParam('--profile', options.profile);
+      }
+      if(options.appConfigFile){
+        addParam('--appConfigFile', options.appConfigFile);
       }
 
       /*
