@@ -40,6 +40,13 @@ module.exports = function(grunt) {
        */
       profile: null,
       /**
+       * Profile for the build
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
+      profiles: null,
+      /**
        * Config file for dojox/app
        * @type {String=}
        * @memberOf defaults
@@ -138,7 +145,7 @@ module.exports = function(grunt) {
       /*
        * Support both the singular and plural form of the 'package' and 'require' parameters
        */
-      ['package', 'require'].forEach(function(dojoParam){
+      ['package', 'require', 'profile'].forEach(function(dojoParam){
           if(!Array.isArray(options[dojoParam+'s'])) {
             options[dojoParam+'s'] = [];
           }
