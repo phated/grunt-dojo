@@ -32,11 +32,11 @@ dojo: {
       profiles: [], // Optional: Array of Profiles for build
       appConfigFile: '', // Optional: Config file for dojox/app
       package: '', // Optional: Location to search package.json (Default: nothing)
-      packages [], // Optional: Array of locations of package.json (Default: nothing)
+      packages: [], // Optional: Array of locations of package.json (Default: nothing)
       require: '', // Optional: Module to require for the build (Default: nothing)
-      requires [], // Optional: Array of modules to require for the build (Default: nothing)
+      requires: [], // Optional: Array of modules to require for the build (Default: nothing)
       cwd: './', // Directory to execute build within
-      dojoConfig: '' // Optional: Location of dojoConfig (Default: null),
+      dojoConfig: '', // Optional: Location of dojoConfig (Default: null),
       // Optional: Base Path to pass at the command line
       // Takes precedence over other basePaths
       // Default: null
@@ -51,11 +51,11 @@ dojo: {
     profiles: [], // Optional: Array of Profiles for build
     appConfigFile: '', // Optional: Config file for dojox/app
     package: '', // Optional: Location to search package.json (Default: nothing)
-    packages [], // Optional: Array of locations of package.json (Default: nothing)
+    packages: [], // Optional: Array of locations of package.json (Default: nothing)
     require: '', // Optional: Module to require for the build (Default: nothing)
-    requires [], // Optional: Array of modules to require for the build (Default: nothing)
+    requires: [], // Optional: Array of modules to require for the build (Default: nothing)
     cwd: './', // Directory to execute build within
-    dojoConfig: '' // Optional: Location of dojoConfig (Default: null),
+    dojoConfig: '', // Optional: Location of dojoConfig (Default: null),
     // Optional: Base Path to pass at the command line
     // Takes precedence over other basePaths
     // Default: null
