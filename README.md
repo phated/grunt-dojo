@@ -29,6 +29,7 @@ dojo: {
       dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
       load: 'build', // Optional: Utility to bootstrap (Default: 'build')
       profile: 'app.profile.js', // Profile for build
+      profiles: [], // Optional: Array of Profiles for build
       appConfigFile: '', // Optional: Config file for dojox/app
       package: '', // Optional: Location to search package.json (Default: nothing)
       packages [], // Optional: Array of locations of package.json (Default: nothing)
@@ -47,6 +48,7 @@ dojo: {
     dojo: 'path/to/dojo.js', // Path to dojo.js file in dojo source
     load: 'build', // Optional: Utility to bootstrap (Default: 'build')
     profile: 'app.profile.js', // Profile for build
+    profiles: [], // Optional: Array of Profiles for build
     appConfigFile: '', // Optional: Config file for dojox/app
     package: '', // Optional: Location to search package.json (Default: nothing)
     packages [], // Optional: Array of locations of package.json (Default: nothing)
