@@ -35,6 +35,7 @@ dojo: {
       packages: [], // Optional: Array of locations of package.json (Default: nothing)
       require: '', // Optional: Module to require for the build (Default: nothing)
       requires: [], // Optional: Array of modules to require for the build (Default: nothing)
+      action: '', // Optional: Build action, release, help. clean has been deprecated.
       cwd: './', // Directory to execute build within
       dojoConfig: '', // Optional: Location of dojoConfig (Default: null),
       // Optional: Base Path to pass at the command line
@@ -54,6 +55,7 @@ dojo: {
     packages: [], // Optional: Array of locations of package.json (Default: nothing)
     require: '', // Optional: Module to require for the build (Default: nothing)
     requires: [], // Optional: Array of modules to require for the build (Default: nothing)
+    action: '', // Optional: Build action, release, help. clean has been deprecated.
     cwd: './', // Directory to execute build within
     dojoConfig: '', // Optional: Location of dojoConfig (Default: null),
     // Optional: Base Path to pass at the command line
