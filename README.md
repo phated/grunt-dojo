@@ -4,7 +4,7 @@ Build Dojo inside a Grunt task
 
 ## Compatibility
 
-grunt-dojo `~0.2.0` works with Grunt `~0.4.0`
+grunt-dojo `>=0.2.0` works with Grunt `~0.4.0`
 
 For Grunt `~0.3.0`: use `grunt-dojo@0.1.3`
 
