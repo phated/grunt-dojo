@@ -89,6 +89,13 @@ module.exports = function(grunt) {
        */
       releaseDir: null,
       /**
+       * Action to perfom on build. Can be a CSV of args release, clean, help
+       * @type {String=}
+       * @memberOf defaults
+       * @default
+       */
+       action: null,
+      /**
        * Directory to execute build within
        * @type {String=}
        * @memberOf defaults
@@ -164,6 +171,10 @@ module.exports = function(grunt) {
 
       if(options.releaseDir){
        addParam('--releaseDir', options.releaseDir);
+      }
+
+      if(options.action){
+       addParam('--action', options.action);
       }
     } else {
       grunt.log.error('No dojo specified');
