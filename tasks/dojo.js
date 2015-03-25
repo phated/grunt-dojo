@@ -176,6 +176,54 @@ module.exports = function(grunt) {
       if(options.action){
        addParam('--action', options.action);
       }
+
+      if (options.layerOptimize != undefined){
+       addParam("--layerOptimize", options.layerOptimize);
+      }
+
+      if (options.cssOptimize){
+       addParam("--cssOptimize", options.cssOptimize);
+      }
+
+      if (options.optimize){
+       addParam("--optimize", options.optimize);
+      }
+
+      if (options.mini){
+       addParam("--mini", options.mini);
+      }
+
+      if (options.stripConsole != undefined){
+       addParam("--stripConsole", options.stripConsole);
+      }
+
+      if (options.selectorEngine){
+       addParam("--selectorEngine", options.selectorEngine);
+      }
+
+      if (options.localeList){
+       addParam("--localeList", options.localeList);
+      }
+
+      if (options.loader){
+       addParam("--loader", options.loader);
+      }
+
+      if (options.internStrings){
+       addParam("--internStrings", options.internStrings);
+      }
+
+      if (options.copyTests){
+       addParam("--copyTests", options.copyTests);
+      }
+
+      if (options.log){
+       addParam("--log", options.log);
+      }
+
+      if (options.xdDojoPath){
+       addParam("--xdDojoPath", options.xdDojoPath);
+      }
     } else {
       grunt.log.error('No dojo specified');
       done(false);
