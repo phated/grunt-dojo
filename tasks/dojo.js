@@ -240,8 +240,13 @@ module.exports = function(grunt) {
       opts: opts
     }, function(err, result){
       if(err){
-        grunt.log.error(err);
-        return done(false);
+        if(opts.ignoreErrors) {
+          grunt.log.writeln('dojo build error: ' + err);
+          return done(true);
+        } else {
+          grunt.log.error('dojo build error: ' + err);
+          return done(false);
+        }
       }
 
       grunt.log.success('Dojo Successfully Built...');
