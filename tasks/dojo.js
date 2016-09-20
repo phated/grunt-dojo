@@ -240,7 +240,7 @@ module.exports = function(grunt) {
       opts: opts
     }, function(err, result){
       if(err){
-        if(opts.ignoreErrors) {
+        if(options.ignoreErrors) {
           grunt.log.writeln('dojo build error: ' + err);
           return done(true);
         } else {

@@ -41,7 +41,8 @@ dojo: {
       // Optional: Base Path to pass at the command line
       // Takes precedence over other basePaths
       // Default: null
-      basePath: ''
+      basePath: '',
+      ignoreErrors: true // Options (default: false): Grunt task returns successful even if there are errors in the dojo build
     }
   },
   options: {
@@ -61,7 +62,8 @@ dojo: {
     // Optional: Base Path to pass at the command line
     // Takes precedence over other basePaths
     // Default: null
-    basePath: ''
+    basePath: '',
+    ignoreErrors: true // Options (default: false): Grunt task returns successful even if there are errors in the dojo build
   }
 }
 ```
